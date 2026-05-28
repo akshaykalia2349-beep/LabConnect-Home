@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabConnect Home | Premium Home Sample Collection · Delhi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060810;--bg2:#0c1020;--bg3:#111828;--gold:#d4a843;--gold2:#f0c96a;--gold3:rgba(212,168,67,0.12);--teal:#00c9a7;--teal2:rgba(0,201,167,0.1);--white:#f8f4ee;--muted:#7a8499;--border:rgba(212,168,67,0.18);--border2:rgba(212,168,67,0.35);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;}
+nav.scrolled{background:rgba(6,8,16,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 64px;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--white);letter-spacing:1px;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:40px;list-style:none;}
+.nav-links a{color:rgba(248,244,238,0.7);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color 0.3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 28px;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--bg);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:140px 64px 120px;}
+#bioCanvas{position:absolute;inset:0;width:100%;height:100%;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,8,16,0.88) 0%,rgba(6,8,16,0.6) 50%,rgba(6,8,16,0.75) 100%);}
+.hero-content{position:relative;z-index:2;max-width:680px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px;opacity:0;animation:riseUp 0.9s 0.2s forwards;}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--gold);}
+.hero-eyebrow-text{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,6.5vw,92px);font-weight:300;line-height:1.04;margin-bottom:28px;opacity:0;animation:riseUp 0.9s 0.35s forwards;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero h1 strong{font-weight:600;}
+.hero-sub{font-size:16px;color:rgba(248,244,238,0.75);line-height:1.85;font-weight:300;max-width:520px;margin-bottom:52px;opacity:0;animation:riseUp 0.9s 0.5s forwards;}
+.hero-actions{display:flex;gap:20px;flex-wrap:wrap;opacity:0;animation:riseUp 0.9s 0.65s forwards;}
+.btn-gold{background:var(--gold);color:var(--bg);padding:16px 40px;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;font-weight:500;border:none;cursor:pointer;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-ghost{border:1px solid rgba(248,244,238,0.3);color:var(--white);padding:16px 40px;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats-bar{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(212,168,67,0.2);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(6,8,16,0.7);backdrop-filter:blur(10px);opacity:0;animation:riseUp 0.9s 0.8s forwards;}
+.hero-stat{padding:28px 40px;border-right:1px solid rgba(212,168,67,0.15);text-align:center;}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--gold);display:block;}
+.hero-stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,244,238,0.5);margin-top:4px;display:block;}
+
+/* SCROLLING TICKER */
+.ticker{background:var(--gold);padding:12px 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-block;animation:tickerScroll 25s linear infinite;}
+.ticker-item{display:inline-block;padding:0 48px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--bg);}
+.ticker-dot{display:inline-block;width:5px;height:5px;background:var(--bg);border-radius:50%;margin:0 16px;vertical-align:middle;opacity:0.4;}
+@keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* SECTIONS */
+section{padding:120px 64px;}
+.sec-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.sec-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,58px);font-weight:300;line-height:1.15;margin-bottom:20px;}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-sub{font-size:15px;color:var(--muted);line-height:1.9;font-weight:300;}
+
+/* SERVICES */
+.services-bg{background:var(--bg2);}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;flex-wrap:wrap;gap:32px;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);}
+.service-card{background:var(--bg2);padding:48px 36px;transition:all 0.4s;position:relative;overflow:hidden;cursor:pointer;}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold3),transparent);opacity:0;transition:opacity 0.4s;}
+.service-card:hover::before{opacity:1;}
+.service-card:hover{background:var(--bg3);}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:rgba(212,168,67,0.08);position:absolute;top:20px;right:28px;line-height:1;transition:color 0.4s;}
+.service-card:hover .service-num{color:rgba(212,168,67,0.18);}
+.service-icon-wrap{width:56px;height:56px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:28px;transition:border-color 0.4s;}
+.service-card:hover .service-icon-wrap{border-color:var(--gold);}
+.service-icon{font-size:24px;}
+.service-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;transition:color 0.3s;}
+.service-card:hover .service-name{color:var(--gold);}
+.service-desc{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px;font-weight:300;}
+.service-price{font-size:12px;letter-spacing:1px;color:var(--teal);}
+.service-arrow{position:absolute;bottom:36px;right:36px;width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.4s;font-size:16px;}
+.service-card:hover .service-arrow{background:var(--gold);border-color:var(--gold);color:var(--bg);}
+
+/* PRICING */
+.pricing-header{text-align:center;margin-bottom:80px;}
+.pricing-header .sec-label{justify-content:center;}
+.pricing-header .sec-label::before{display:none;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.price-card{border:1px solid var(--border);padding:40px 32px;position:relative;transition:all 0.4s;background:var(--bg2);}
+.price-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(135deg,rgba(212,168,67,0.06),var(--bg2));}
+.featured-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;font-weight:500;}
+.price-test-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:8px;}
+.price-includes{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:28px;min-height:60px;}
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;}
+.price-now{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:600;color:var(--gold);}
+.price-was{font-size:16px;color:var(--muted);text-decoration:line-through;}
+.price-save{font-size:12px;color:var(--teal);letter-spacing:1px;margin-bottom:28px;}
+.price-btn{display:block;text-align:center;border:1px solid var(--border2);color:var(--gold);padding:14px;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;cursor:pointer;background:transparent;width:100%;}
+.price-btn:hover,.price-card.featured .price-btn{background:var(--gold);color:var(--bg);border-color:var(--gold);}
+.price-features{list-style:none;margin:24px 0;display:flex;flex-direction:column;gap:10px;}
+.price-features li{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:10px;}
+.price-features li::before{content:'';width:16px;height:1px;background:var(--teal);flex-shrink:0;}
+
+/* HOW */
+.how-bg{background:var(--bg2);}
+.how-header{text-align:center;margin-bottom:100px;}
+.how-header .sec-label{justify-content:center;}
+.how-header .sec-label::before{display:none;}
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.steps-row::after{content:'';position:absolute;top:52px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--teal),var(--gold),transparent);opacity:0.3;}
+.step{text-align:center;padding:0 24px;}
+.step-circle{width:104px;height:104px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 32px;position:relative;z-index:2;background:var(--bg2);transition:all 0.4s;}
+.step:hover .step-circle{border-color:var(--gold);background:var(--gold3);}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--gold);}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:12px;}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300;}
+
+/* AREAS */
+.areas-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.areas-list{display:flex;flex-direction:column;gap:0;}
+.area-item{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);transition:all 0.3s;}
+.area-item:first-child{border-top:1px solid var(--border);}
+.area-item:hover{padding-left:8px;}
+.area-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.area-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;}
+.area-arrow{margin-left:auto;color:var(--gold);opacity:0;transition:opacity 0.3s;font-size:18px;}
+.area-item:hover .area-arrow{opacity:1;}
+.area-item:hover .area-dot{background:var(--teal);}
+
+/* WHY */
+.why-bg{background:var(--bg2);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:80px;}
+.why-item{background:var(--bg2);padding:48px 36px;transition:background 0.3s;}
+.why-item:hover{background:var(--bg3);}
+.why-icon{font-size:28px;margin-bottom:24px;}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:12px;}
+.why-desc{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;}
+
+/* BOOKING */
+.booking-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
+.booking-left{padding:72px 56px;background:var(--bg3);border-right:1px solid var(--border);}
+.booking-right{padding:72px 56px;}
+.booking-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.1;margin-bottom:16px;}
+.booking-title em{font-style:italic;color:var(--gold);}
+.booking-sub{font-size:15px;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:48px;}
+.contact-methods{display:flex;flex-direction:column;gap:0;}
+.contact-method{display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--white);transition:all 0.3s;}
+.contact-method:first-child{border-top:1px solid var(--border);}
+.contact-method:hover{padding-left:8px;color:var(--gold);}
+.contact-icon{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:all 0.3s;}
+.contact-method:hover .contact-icon{border-color:var(--gold);background:var(--gold3);}
+.contact-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+.contact-val{font-size:15px;font-family:'Cormorant Garamond',serif;}
+.form-group{margin-bottom:20px;}
+.form-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.form-input,.form-select{width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:12px 0;color:var(--white);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color 0.3s;appearance:none;}
+.form-input::placeholder{color:rgba(122,132,153,0.5);}
+.form-input:focus,.form-select:focus{border-color:var(--gold);}
+.form-select option{background:var(--bg);color:var(--white);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.form-submit{width:100%;background:var(--gold);color:var(--bg);border:none;padding:18px;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:all 0.3s;font-weight:500;}
+.form-submit:hover{background:var(--gold2);}
+.form-success{display:none;text-align:center;padding:40px;}
+.form-success-icon{font-size:48px;margin-bottom:16px;}
+.form-success-text{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);}
+.form-success-sub{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.7;}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(6,8,16,0.92);z-index:1000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border);max-width:680px;width:90%;max-height:85vh;overflow-y:auto;position:relative;}
+.modal-header{padding:40px 48px 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;}
+.modal-title em{font-style:italic;color:var(--gold);}
+.modal-close{background:none;border:1px solid var(--border);color:var(--muted);width:40px;height:40px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;}
+.modal-close:hover{border-color:var(--gold);color:var(--gold);}
+.modal-body{padding:32px 48px 48px;}
+.modal-desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:32px;}
+.modal-tests{display:flex;flex-direction:column;gap:0;}
+.modal-test{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);}
+.modal-test:first-child{border-top:1px solid var(--border);}
+.modal-test-name{font-size:14px;}
+.modal-test-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);}
+.modal-test-was{font-size:12px;color:var(--muted);text-decoration:line-through;margin-right:8px;}
+.modal-book-btn{display:block;width:100%;background:var(--gold);color:var(--bg);border:none;padding:18px;font-family:'Outfit',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:32px;transition:all 0.3s;font-weight:500;}
+.modal-book-btn:hover{background:var(--gold2);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:64px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:12px;}
+.footer-brand span{color:var(--gold);}
+.footer-tagline{font-size:13px;color:var(--muted);line-height:1.7;}
+.footer-col-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color 0.3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border);padding:24px 64px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:12px;color:var(--muted);}
+.footer-social{display:flex;gap:16px;}
+.footer-social a{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:14px;transition:all 0.3s;}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ANIMATIONS */
+@keyframes riseUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
+/* TEST TILES */
+.test-tile{background:var(--bg2);padding:24px 20px;transition:all 0.3s;cursor:pointer;}
+.test-tile:hover{background:var(--bg3);}
+.test-tile:hover .test-btn{background:var(--gold);color:var(--bg);}
+.test-code{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.test-name{font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:8px;line-height:1.3;}
+.test-price{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);font-weight:600;margin-bottom:12px;}
+.test-btn{background:transparent;border:1px solid var(--border2);color:var(--gold);padding:7px 18px;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+/* PACKAGE CARDS */
+.pkg-card{background:var(--bg3);border:1px solid var(--border);padding:36px 32px;transition:all 0.4s;}
+.pkg-card:hover{border-color:var(--border2);transform:translateY(-3px);}
+.pkg-badge-wrap{margin-bottom:16px;}
+.pkg-badge{font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;font-weight:500;}
+.pkg-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:8px;}
+.pkg-price{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--teal);font-weight:600;margin-bottom:8px;}
+.pkg-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.pkg-divider{height:1px;background:var(--border);margin-bottom:20px;}
+.pkg-tests{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.pkg-tests li{font-size:12px;background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:4px 12px;color:var(--muted);letter-spacing:0.5px;}
+.pkg-btn{width:100%;background:transparent;border:1px solid var(--border2);color:var(--gold);padding:14px;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+.pkg-btn:hover{background:var(--gold);color:var(--bg);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+
+@media(max-width:900px){
+nav{padding:16px 24px;}nav.scrolled{padding:12px 24px;}.nav-links{display:none;}
+.hero{padding:100px 24px 100px;}.hero-stats-bar{grid-template-columns:repeat(2,1fr);}.hero-stat{padding:20px 16px;}
+section{padding:72px 24px;}.services-header{flex-direction:column;gap:20px;}
+.steps-row{grid-template-columns:1fr 1fr;gap:40px;}.steps-row::after{display:none;}
+.areas-inner{grid-template-columns:1fr;}.why-grid{grid-template-columns:1fr;}
+.booking-inner{grid-template-columns:1fr;}.booking-left,.booking-right{padding:40px 24px;}
+footer{grid-template-columns:1fr;padding:40px 24px;gap:32px;}.footer-bottom{flex-direction:column;gap:16px;padding:20px 24px;text-align:center;}
+.form-row{grid-template-columns:1fr;}.pricing-grid{grid-template-columns:1fr;}
+.modal-header{padding:28px 24px 0;}.modal-body{padding:20px 24px 36px;}}
+</style>
+</head>
+<body>
+
+
+
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Lab<span>Connect</span> Home</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Tests</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book a Test</a>
+</nav>
+
+<!-- HERO with full canvas biomedical animation -->
+<section class="hero" id="home">
+  <canvas id="bioCanvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><div class="hero-eyebrow-text">Delhi's Premium Home Diagnostics</div></div>
+    <h1><strong>Lab Tests</strong><br>at Your <em>Doorstep.</em></h1>
+    <p class="hero-sub">Skip the queue. No commute needed. Our certified phlebotomists arrive at your home, collect samples with clinical precision, and deliver reports within 24 hours.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-gold">Book a Test &rarr;</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+  <div class="hero-stats-bar">
+    <div class="hero-stat"><span class="hero-stat-num">10%</span><span class="hero-stat-label">Launch Discount</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">24hr</span><span class="hero-stat-label">Report Delivery</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">6+</span><span class="hero-stat-label">Areas Covered</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Home Collection</span></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Blood Tests</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Home Collection</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Wellness Packages</span><span class="ticker-dot"></span>
+    <span class="ticker-item">10% Launch Discount</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Report in 24 Hours</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Vikaspuri · Dwarka · Janakpuri</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Thyroid · Diabetes · CBC</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Certified Phlebotomists</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Blood Tests</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Home Collection</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Wellness Packages</span><span class="ticker-dot"></span>
+    <span class="ticker-item">10% Launch Discount</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Report in 24 Hours</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Vikaspuri · Dwarka · Janakpuri</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Thyroid · Diabetes · CBC</span><span class="ticker-dot"></span>
+    <span class="ticker-item">Certified Phlebotomists</span><span class="ticker-dot"></span>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);height:200px;gap:2px;overflow:hidden;">
+  <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&q=80" alt="Lab collection" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55);transition:filter 0.4s;" onmouseenter="this.style.filter='brightness(0.8)'" onmouseleave="this.style.filter='brightness(0.55)'"></div>
+  <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80" alt="Blood sample" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55);transition:filter 0.4s;" onmouseenter="this.style.filter='brightness(0.8)'" onmouseleave="this.style.filter='brightness(0.55)'"></div>
+  <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80" alt="Doctor home visit" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55);transition:filter 0.4s;" onmouseenter="this.style.filter='brightness(0.8)'" onmouseleave="this.style.filter='brightness(0.55)'"></div>
+  <div style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Medical lab" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55);transition:filter 0.4s;" onmouseenter="this.style.filter='brightness(0.8)'" onmouseleave="this.style.filter='brightness(0.55)'"></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="services-header reveal">
+    <div><div class="sec-label">What We Offer</div><div class="sec-title">Our <em>Services</em></div></div>
+    <div class="sec-sub" style="max-width:380px;">All tests by certified professionals with strict hygiene. Click any service for details.</div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal" onclick="openModal('blood')">
+      <div class="service-num">01</div><div class="service-icon-wrap"><div class="service-icon">🩸</div></div>
+      <div class="service-name">Blood Tests</div>
+      <div class="service-desc">CBC, sugar, cholesterol, thyroid, liver, kidney, HbA1c and 50+ parameters — all at home.</div>
+      <div class="service-price">Starting ₹179 · 10% off applied</div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal reveal-delay-1" onclick="openModal('urine')">
+      <div class="service-num">02</div><div class="service-icon-wrap"><div class="service-icon">🧪</div></div>
+      <div class="service-name">Urine Tests</div>
+      <div class="service-desc">Routine urinalysis, culture & sensitivity. Hygienic sample kits provided at your door.</div>
+      <div class="service-price">Starting ₹134 · 10% off applied</div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal reveal-delay-2" onclick="openModal('fullbody')">
+      <div class="service-num">03</div><div class="service-icon-wrap"><div class="service-icon">💊</div></div>
+      <div class="service-name">Full Body Checkup</div>
+      <div class="service-desc">70+ parameters covering every major organ. Perfect for annual wellness monitoring.</div>
+      <div class="service-price">Starting ₹719 · 10% off applied</div>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card reveal reveal-delay-3" onclick="openModal('covid')">
+      <div class="service-num">04</div><div class="service-icon-wrap"><div class="service-icon">🦠</div></div>
+      <div class="service-name">COVID & Swab Tests</div>
+      <div class="service-desc">RT-PCR, Antigen, swab-based diagnostics. ICMR certified, quick turnaround.</div>
+      <div class="service-price">Starting ₹269 · 10% off applied</div>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about" style="background:var(--bg2);">
+  <div class="areas-inner">
+    <div class="reveal">
+      <div class="sec-label">Who We Are</div>
+      <div class="sec-title">About <em>LabConnect Home</em></div>
+      <div class="sec-sub" style="margin-bottom:28px;">LabConnect Home was founded with one simple belief — <strong style="color:var(--white);font-weight:500;">your health should never wait.</strong> We are a Delhi-based home diagnostic service built for families, working professionals, senior citizens, and anyone who deserves quality healthcare without the hassle of stepping outside.</div>
+      <div class="sec-sub" style="margin-bottom:28px;">Our team of trained and certified phlebotomists visits your home at your preferred time, collects samples with clinical precision using sterile single-use equipment, and delivers your digital reports directly on WhatsApp — all within 24 hours.</div>
+      <div class="sec-sub" style="margin-bottom:40px;">We believe diagnostics should be <em style="color:var(--gold);">affordable, accessible, and trustworthy</em>. That is why we keep our prices transparent, our process simple, and our service genuinely personal. No long queues. No confusion. Just care — at your door.</div>
+      <a href="#booking" class="btn-gold">Book a Test Today &rarr;</a>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+        <div style="background:var(--bg3);padding:36px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:600;">24hr</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Report Delivery</div>
+        </div>
+        <div style="background:var(--bg3);padding:36px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:600;">100%</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Home Collection</div>
+        </div>
+        <div style="background:var(--bg3);padding:36px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--teal);font-weight:600;">6+</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Areas in Delhi</div>
+        </div>
+        <div style="background:var(--bg3);padding:36px 28px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--teal);font-weight:600;">10%</div>
+          <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Launch Discount</div>
+        </div>
+        <div style="background:var(--bg3);padding:28px;grid-column:span 2;border-top:1px solid var(--border);">
+          <div style="font-size:13px;color:var(--muted);line-height:1.8;text-align:center;">🧬 Sterile Equipment &nbsp;·&nbsp; 🩺 Certified Staff &nbsp;·&nbsp; 📲 WhatsApp Reports &nbsp;·&nbsp; 🏠 Zero Travel Needed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<!-- INDIVIDUAL TEST PRICES -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <div class="sec-label">Transparent Pricing</div>
+    <div class="sec-title">Individual <em>Test Prices</em></div>
+    <div class="sec-sub">All prices include free home collection. No hidden charges. Accurate &amp; affordable.</div>
+  </div>
+
+  <!-- Lab image banner -->
+  <div class="reveal" style="margin-bottom:48px;border:1px solid var(--border);overflow:hidden;position:relative;height:200px;background:var(--bg3);">
+    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80" alt="Lab collection" style="width:100%;height:100%;object-fit:cover;opacity:0.35;">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--white);">Certified · Accurate · Affordable</div>
+      <div style="font-size:13px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;">Home Collection Included in Every Test</div>
+    </div>
+  </div>
+
+  <!-- BLOOD TESTS -->
+  <div class="reveal" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+      <span style="font-size:22px;">🩸</span>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--white);">Blood Tests</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);">
+      <div class="test-tile" onclick="prefillTest('CBC - Complete Blood Count (₹300)')"><div class="test-code">CBC</div><div class="test-name">Complete Blood Count</div><div class="test-price">₹300</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('LFT - Liver Function Test (₹600)')"><div class="test-code">LFT</div><div class="test-name">Liver Function Test</div><div class="test-price">₹600</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('KFT - Kidney Function Test (₹400)')"><div class="test-code">KFT</div><div class="test-name">Kidney Function Test</div><div class="test-price">₹400</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('HbA1c - Diabetes Monitor (₹500)')"><div class="test-code">HbA1c</div><div class="test-name">Diabetes Monitor</div><div class="test-price">₹500</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Lipid Profile - Cholesterol (₹600)')"><div class="test-code">Lipid</div><div class="test-name">Lipid Profile</div><div class="test-price">₹600</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Blood Sugar Fasting + PP (₹100)')"><div class="test-code">Glucose</div><div class="test-name">Blood Sugar (Fasting+PP)</div><div class="test-price">₹100</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Vitamin D3 (₹900)')"><div class="test-code">Vit D3</div><div class="test-name">Vitamin D Test</div><div class="test-price">₹900</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Vitamin B12 (₹800)')"><div class="test-code">Vit B12</div><div class="test-name">Vitamin B12</div><div class="test-price">₹800</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('CRP - C Reactive Protein (₹600)')"><div class="test-code">CRP</div><div class="test-name">C Reactive Protein</div><div class="test-price">₹600</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Rheumatoid Factor (₹400)')"><div class="test-code">RA</div><div class="test-name">Rheumatoid Factor</div><div class="test-price">₹400</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('HIV Test (₹500)')"><div class="test-code">HIV</div><div class="test-name">HIV Test</div><div class="test-price">₹500</div><button class="test-btn">Book</button></div>
+    </div>
+  </div>
+
+  <!-- URINE TESTS -->
+  <div class="reveal" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+      <span style="font-size:22px;">🧪</span>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--white);">Urine Tests</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);">
+      <div class="test-tile" onclick="prefillTest('Urine Routine (₹250)')"><div class="test-code">Urine</div><div class="test-name">Urine Routine</div><div class="test-price">₹250</div><button class="test-btn">Book</button></div>
+      <div class="test-tile" onclick="prefillTest('Urine Culture (₹600)')"><div class="test-code">Culture</div><div class="test-name">Urine Culture</div><div class="test-price">₹600</div><button class="test-btn">Book</button></div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:32px;border:1px solid var(--border);padding:24px 32px;background:var(--bg2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div style="font-size:14px;color:var(--muted);">💡 <strong style="color:var(--white);">Can't find your test?</strong> We cover 100+ tests — call or WhatsApp us.</div>
+    <a href="https://wa.me/919217121345" class="btn-gold" style="padding:12px 28px;font-size:11px;">WhatsApp for More Tests →</a>
+  </div>
+</section>
+
+<!-- WELLNESS PACKAGES PAGE -->
+<section id="packages" style="background:var(--bg2);">
+  <div class="pricing-header reveal">
+    <div class="sec-label">Comprehensive Wellness</div>
+    <div class="sec-title">Health <em>Packages</em></div>
+    <div class="sec-sub">All-inclusive packages with free home collection. Designed for complete health monitoring.</div>
+  </div>
+
+  <!-- Package image banner -->
+  <div class="reveal" style="margin-bottom:56px;border:1px solid var(--border);overflow:hidden;position:relative;height:220px;background:var(--bg3);">
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80" alt="Health packages" style="width:100%;height:100%;object-fit:cover;opacity:0.3;">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;padding:20px 40px;gap:16px;">
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);font-weight:600;">5</div><div style="font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;">Packages</div></div>
+      <div style="width:1px;height:60px;background:var(--border);"></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);font-weight:600;">70+</div><div style="font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;">Parameters</div></div>
+      <div style="width:1px;height:60px;background:var(--border);"></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold);font-weight:600;">₹999</div><div style="font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;">Starting From</div></div>
+      <div style="width:1px;height:60px;background:var(--border);"></div>
+      <div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--teal);font-weight:600;">Free</div><div style="font-size:11px;letter-spacing:2px;color:var(--white);text-transform:uppercase;">Home Collection</div></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;">
+
+    <!-- Essential -->
+    <div class="pkg-card reveal">
+      <div class="pkg-badge-wrap"><span class="pkg-badge" style="background:var(--teal);color:var(--bg);">Essential</span></div>
+      <div class="pkg-name">Essential Package</div>
+      <div class="pkg-price">₹999</div>
+      <div class="pkg-sub">Your first step to complete health monitoring</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-tests">
+        <li>CBC</li><li>LFT</li><li>KFT</li><li>Lipid Profile</li>
+        <li>Glucose Fasting</li><li>Thyroid Profile</li><li>Urine Examination</li>
+      </ul>
+      <button class="pkg-btn" onclick="prefillTest('Essential Package (₹999)')">Book This Package →</button>
+    </div>
+
+    <!-- Premium -->
+    <div class="pkg-card reveal reveal-delay-1" style="border-color:var(--gold);">
+      <div class="pkg-badge-wrap"><span class="pkg-badge" style="background:var(--gold);color:var(--bg);">★ Most Popular</span></div>
+      <div class="pkg-name">Premium Package</div>
+      <div class="pkg-price" style="color:var(--gold2);">₹1,199</div>
+      <div class="pkg-sub">Advanced health check with iron & thyroid</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-tests">
+        <li>CBC</li><li>LFT</li><li>KFT</li><li>Lipid Profile</li>
+        <li>HbA1c</li><li>Iron Profile</li><li>Urine Examination</li>
+        <li>Thyroid Profile</li><li>Glucose Fasting</li>
+      </ul>
+      <button class="pkg-btn" style="background:var(--gold);color:var(--bg);" onclick="prefillTest('Premium Package (₹1,199)')">Book This Package →</button>
+    </div>
+
+    <!-- Health Profile 3.0 -->
+    <div class="pkg-card reveal reveal-delay-2">
+      <div class="pkg-badge-wrap"><span class="pkg-badge" style="background:rgba(0,201,167,0.2);color:var(--teal);border:1px solid var(--teal);">Profile 3.0</span></div>
+      <div class="pkg-name">Health Profile 3.0</div>
+      <div class="pkg-price">₹1,799</div>
+      <div class="pkg-sub">Comprehensive with vitamins & full thyroid</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-tests">
+        <li>CBC</li><li>ESR</li><li>LFT</li><li>KFT</li><li>Lipid Profile</li>
+        <li>Thyroid Profile</li><li>HbA1c</li><li>Glucose Fasting</li>
+        <li>Urine Examination</li><li>Vitamin D</li><li>Vitamin B12</li>
+      </ul>
+      <button class="pkg-btn" onclick="prefillTest('Health Profile 3.0 (₹1,799)')">Book This Package →</button>
+    </div>
+
+    <!-- Health Profile 4.0 -->
+    <div class="pkg-card reveal">
+      <div class="pkg-badge-wrap"><span class="pkg-badge" style="background:rgba(212,168,67,0.15);color:var(--gold);border:1px solid var(--border2);">Profile 4.0</span></div>
+      <div class="pkg-name">Health Profile 4.0</div>
+      <div class="pkg-price">₹2,500</div>
+      <div class="pkg-sub">Ultimate full body with inflammation markers</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-tests">
+        <li>CBC</li><li>ESR</li><li>LFT</li><li>KFT</li><li>Lipid Profile</li>
+        <li>Thyroid Profile</li><li>HbA1c</li><li>Glucose Fasting</li>
+        <li>Urine Examination</li><li>Vitamin D</li><li>Vitamin B12</li>
+        <li>Rheumatoid Factor (RA)</li><li>CRP (Quantitative)</li>
+      </ul>
+      <button class="pkg-btn" onclick="prefillTest('Health Profile 4.0 (₹2,500)')">Book This Package →</button>
+    </div>
+
+    <!-- Antenatal Care -->
+    <div class="pkg-card reveal reveal-delay-1" style="border-color:rgba(255,180,180,0.3);">
+      <div class="pkg-badge-wrap"><span class="pkg-badge" style="background:rgba(255,100,100,0.15);color:#ff9999;border:1px solid rgba(255,100,100,0.3);">🤰 Antenatal</span></div>
+      <div class="pkg-name">Antenatal Care Profile</div>
+      <div class="pkg-price" style="color:#ff9999;">₹1,999</div>
+      <div class="pkg-sub">Complete pregnancy health monitoring package</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-tests">
+        <li>CBC</li><li>Blood Group & Rh</li><li>Blood Sugar (Fasting)</li>
+        <li>Urine Routine</li><li>HIV</li><li>HBsAg (Hepatitis B)</li>
+        <li>VDRL / Syphilis</li><li>Thyroid Profile</li><li>Iron Profile</li>
+        <li>Vitamin B12</li><li>Vitamin D</li>
+      </ul>
+      <button class="pkg-btn" style="border-color:rgba(255,100,100,0.4);color:#ff9999;" onclick="prefillTest('Antenatal Care Profile (₹1,999)')">Book This Package →</button>
+    </div>
+
+    <!-- CTA card -->
+    <div class="pkg-card reveal reveal-delay-2" style="background:var(--gold3);border-color:var(--border2);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:16px;min-height:300px;">
+      <div style="font-size:40px;">💬</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24px;">Need a Custom Package?</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;">Tell us your requirements and we'll put together the right package at the best price.</div>
+      <a href="https://wa.me/919217121345" class="btn-gold" style="padding:14px 28px;font-size:11px;margin-top:8px;">WhatsApp Us →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-bg">
+  <div class="how-header reveal">
+    <div class="sec-label">Simple Process</div>
+    <div class="sec-title">How It <em>Works</em></div>
+    <div class="sec-sub" style="max-width:500px;margin:0 auto;">From booking to results in 4 seamless steps.</div>
+  </div>
+  <div class="steps-row">
+    <div class="step reveal"><div class="step-circle"><div class="step-num">01</div></div><div class="step-title">Book Online</div><div class="step-desc">WhatsApp, call, or our form. Done in under 2 minutes.</div></div>
+    <div class="step reveal reveal-delay-1"><div class="step-circle"><div class="step-num">02</div></div><div class="step-title">We Confirm</div><div class="step-desc">Instant slot confirmation and a reminder before arrival.</div></div>
+    <div class="step reveal reveal-delay-2"><div class="step-circle"><div class="step-num">03</div></div><div class="step-title">Home Collection</div><div class="step-desc">Certified phlebotomist at your door with sterile equipment.</div></div>
+    <div class="step reveal reveal-delay-3"><div class="step-circle"><div class="step-num">04</div></div><div class="step-title">Get Reports</div><div class="step-desc">Digital reports on WhatsApp within 24 hours.</div></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="areas-inner">
+    <div class="reveal">
+      <div class="sec-label">Coverage</div>
+      <div class="sec-title">Areas We <em>Serve</em></div>
+      <div class="sec-sub" style="margin-bottom:40px;">Serving West Delhi with plans to expand across NCR.</div>
+      <a href="#booking" class="btn-gold">Check Your Area &rarr;</a>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="areas-list">
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Vikaspuri</div><div class="area-arrow">→</div></div>
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Uttam Nagar</div><div class="area-arrow">→</div></div>
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Dwarka</div><div class="area-arrow">→</div></div>
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Janakpuri</div><div class="area-arrow">→</div></div>
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Hastal Road</div><div class="area-arrow">→</div></div>
+        <div class="area-item"><div class="area-dot"></div><div class="area-name">Nawada</div><div class="area-arrow">→</div></div>
+        <div class="area-item" style="opacity:0.4;"><div class="area-dot" style="background:var(--muted);"></div><div class="area-name" style="color:var(--muted);font-size:18px;">More areas coming soon</div></div>
+      </div>
+      <div style="margin-top:28px;overflow:hidden;border:1px solid var(--border);">
+        <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800&q=80" alt="Home visit" style="width:100%;height:180px;object-fit:cover;filter:brightness(0.5);display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-bg">
+  <div class="reveal" style="text-align:center;">
+    <div class="sec-label" style="justify-content:center;"><span style="width:30px;height:1px;background:var(--gold);display:inline-block;margin-right:12px;"></span>Why Choose Us</div>
+    <div class="sec-title">The LabConnect <em>Difference</em></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal"><div class="why-icon">🏠</div><div class="why-title">At Your Doorstep</div><div class="why-desc">No travel, no parking, no waiting rooms. We come to you.</div></div>
+    <div class="why-item reveal reveal-delay-1"><div class="why-icon">⚡</div><div class="why-title">Fast Reports</div><div class="why-desc">Digital reports to your WhatsApp within 24 hours.</div></div>
+    <div class="why-item reveal reveal-delay-2"><div class="why-icon">🧤</div><div class="why-title">Certified & Safe</div><div class="why-desc">Trained phlebotomists. Sterile single-use equipment every time.</div></div>
+    <div class="why-item reveal"><div class="why-icon">💰</div><div class="why-title">Transparent Pricing</div><div class="why-desc">No hidden charges. 10% launch discount on all tests.</div></div>
+    <div class="why-item reveal reveal-delay-1"><div class="why-icon">📱</div><div class="why-title">Effortless Booking</div><div class="why-desc">Book in 60 seconds via WhatsApp, phone, or our form.</div></div>
+    <div class="why-item reveal reveal-delay-2"><div class="why-icon">📍</div><div class="why-title">Truly Local</div><div class="why-desc">Delhi-born, Delhi-focused. We know your neighbourhood.</div></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" style="padding:0;">
+  <div class="booking-inner">
+    <div class="booking-left reveal">
+      <div class="sec-label">Get In Touch</div>
+      <div class="booking-title">Book Your<br><em>Test Today</em></div>
+      <div class="booking-sub">Reach us via WhatsApp, phone, or fill the form. We confirm your slot within minutes.</div>
+      <div class="contact-methods">
+        <a href="https://wa.me/919217121345" class="contact-method" target="_blank">
+          <div class="contact-icon">💬</div><div><span class="contact-label">WhatsApp</span><span class="contact-val">+91 92171 21345</span></div><span style="margin-left:auto;color:var(--gold);">→</span>
+        </a>
+        <a href="tel:+919217121345" class="contact-method">
+          <div class="contact-icon">📞</div><div><span class="contact-label">Call Us</span><span class="contact-val">+91 92171 21345</span></div><span style="margin-left:auto;color:var(--gold);">→</span>
+        </a>
+        <a href="https://www.instagram.com/labconnecthome?igsh=ZTJmcjlhdmxtOXVm" class="contact-method" target="_blank">
+          <div class="contact-icon">📸</div><div><span class="contact-label">Instagram</span><span class="contact-val">@labconnecthome</span></div><span style="margin-left:auto;color:var(--gold);">→</span>
+        </a>
+        <a href="https://facebook.com/labconnecthome" class="contact-method" target="_blank">
+          <div class="contact-icon">👍</div><div><span class="contact-label">Facebook</span><span class="contact-val">LabConnect Home</span></div><span style="margin-left:auto;color:var(--gold);">→</span>
+        </a>
+        <a href="mailto:labconnecthome@gmail.com" class="contact-method">
+          <div class="contact-icon">✉️</div><div><span class="contact-label">Email Us</span><span class="contact-val">labconnecthome@gmail.com</span></div><span style="margin-left:auto;color:var(--gold);">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="booking-right reveal reveal-delay-1">
+      <div id="bookingForm">
+        <div class="sec-label">Quick Booking</div>
+        <div class="sec-title" style="font-size:36px;margin-bottom:36px;">Schedule a <em>Visit</em></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="fname" placeholder="Your name"></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" id="fphone" placeholder="Your phone number"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="femail" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Your Area</label>
+          <select class="form-select" id="farea"><option value="">Select your area</option><option>Vikaspuri</option><option>Uttam Nagar</option><option>Dwarka</option><option>Janakpuri</option><option>Hastal Road</option><option>Nawada</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Test Required</label>
+          <select class="form-select" id="ftest">
+            <option value="">Select a test</option>
+            <optgroup label="Individual Tests">
+              <option>CBC - Complete Blood Count (₹300)</option>
+              <option>LFT - Liver Function Test (₹600)</option>
+              <option>KFT - Kidney Function Test (₹400)</option>
+              <option>HbA1c - Diabetes Monitor (₹500)</option>
+              <option>Lipid Profile (₹600)</option>
+              <option>Vitamin D3 (₹900)</option>
+              <option>Vitamin B12 (₹800)</option>
+              <option>Blood Sugar (Fasting + PP) (₹100)</option>
+              <option>Urine Routine (₹250)</option>
+              <option>Urine Culture (₹600)</option>
+              <option>CRP - C Reactive Protein (₹600)</option>
+              <option>Rheumatoid Factor (₹400)</option>
+              <option>HIV Test (₹500)</option>
+            </optgroup>
+            <optgroup label="Wellness Packages">
+              <option>Essential Package (₹999)</option>
+              <option>Premium Package (₹1,199)</option>
+              <option>Health Profile 3.0 (₹1,799)</option>
+              <option>Health Profile 4.0 (₹2,500)</option>
+              <option>Antenatal Care Profile (₹1,999)</option>
+            </optgroup>
+            <option>Other / Not Listed</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Preferred Date</label><input type="date" class="form-input" id="fdate"></div>
+        <div class="form-group"><label class="form-label">Message (Optional)</label><input type="text" class="form-input" id="fmessage" placeholder="Any special instructions..."></div>
+        <button class="form-submit" onclick="submitForm()">Confirm Booking &rarr;</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✅</div>
+        <div class="form-success-text">Booking Confirmed!</div>
+        <div class="form-success-sub">We'll contact you within 30 minutes to confirm your slot.<br>Thank you for choosing LabConnect Home.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><div class="footer-brand">Lab<span>Connect</span> Home</div><div class="footer-tagline">Premium home diagnostic services for Delhi NCR. Trusted, certified, affordable.</div></div>
+  <div><div class="footer-col-title">Quick Links</div><ul class="footer-links"><li><a href="#services">Services</a></li><li><a href="#pricing">Test Prices</a></li><li><a href="#packages">Wellness Packages</a></li><li><a href="#how">How It Works</a></li><li><a href="#areas">Areas</a></li><li><a href="#booking">Book a Test</a></li></ul></div>
+  <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://wa.me/919217121345">WhatsApp Us</a></li><li><a href="tel:+919217121345">Call Us</a></li><li><a href="mailto:labconnecthome@gmail.com">labconnecthome@gmail.com</a></li><li><a href="https://www.instagram.com/labconnecthome?igsh=ZTJmcjlhdmxtOXVm">Instagram</a></li><li><a href="https://facebook.com/labconnecthome">Facebook</a></li></ul></div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-copy">© 2026 LabConnect Home · Vikaspuri, New Delhi · labconnecthome.in · labconnecthome@gmail.com</div>
+  <div class="footer-social"><a href="https://www.instagram.com/labconnecthome?igsh=ZTJmcjlhdmxtOXVm">📸</a><a href="https://wa.me/919217121345">💬</a><a href="https://facebook.com/labconnecthome">👍</a></div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-blood" onclick="closeModalOnBg(event,'modal-blood')">
+  <div class="modal"><div class="modal-header"><div><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Service Details</div><div class="modal-title">Blood <em>Tests</em></div></div><button class="modal-close" onclick="closeModal('modal-blood')">✕</button></div>
+  <div class="modal-body"><div class="modal-desc">Comprehensive blood testing from the comfort of your home. Certified phlebotomists, sterile single-use equipment, digital reports in 24 hours.</div>
+  <div class="modal-tests">
+    <div class="modal-test"><span class="modal-test-name">Complete Blood Count (CBC)</span><span><span class="modal-test-price"> ₹300</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Blood Sugar (Fasting + PP)</span><span><span class="modal-test-price"> ₹100</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Lipid Profile (Cholesterol Panel)</span><span><span class="modal-test-price"> ₹600</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Liver Function Test (LFT)</span><span><span class="modal-test-price"> ₹600</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Kidney Function Test (KFT)</span><span><span class="modal-test-price"> ₹400</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">HbA1c (Diabetes Monitor)</span><span><span class="modal-test-price"> ₹500</span></span></div>
+  </div>
+  <button class="modal-book-btn" onclick="closeModal('modal-blood');prefillTest('Basic Blood Panel')">Book a Blood Test &rarr;</button></div></div>
+</div>
+
+<div class="modal-overlay" id="modal-urine" onclick="closeModalOnBg(event,'modal-urine')">
+  <div class="modal"><div class="modal-header"><div><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Service Details</div><div class="modal-title">Urine <em>Tests</em></div></div><button class="modal-close" onclick="closeModal('modal-urine')">✕</button></div>
+  <div class="modal-body"><div class="modal-desc">Safe hygienic urine sample collection at home. We provide collection kits, handle logistics, deliver results digitally.</div>
+  <div class="modal-tests">
+    <div class="modal-test"><span class="modal-test-name">Routine Urine Analysis</span><span><span class="modal-test-price"> ₹250</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Urine Culture & Sensitivity</span><span><span class="modal-test-price"> ₹600</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Microalbumin (Urine)</span><span><span class="modal-test-price"> ₹350</span></span></div>
+  </div>
+  <button class="modal-book-btn" onclick="closeModal('modal-urine');prefillTest('Urine Routine')">Book a Urine Test &rarr;</button></div></div>
+</div>
+
+<div class="modal-overlay" id="modal-fullbody" onclick="closeModalOnBg(event,'modal-fullbody')">
+  <div class="modal"><div class="modal-header"><div><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Service Details</div><div class="modal-title">Full Body <em>Checkup</em></div></div><button class="modal-close" onclick="closeModal('modal-fullbody')">✕</button></div>
+  <div class="modal-body"><div class="modal-desc">Our most comprehensive wellness package — 70+ parameters covering every major organ. Ideal for annual health monitoring.</div>
+  <div class="modal-tests">
+    <div class="modal-test"><span class="modal-test-name">Essential Package (CBC + LFT + KFT)</span><span><span class="modal-test-price"> ₹1,100</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Premium Package (CBC+LFT+KFT+Lipid+HbA1c+Vit D3)</span><span><span class="modal-test-price"> ₹2,800</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Senior Citizen Package (CBC+LFT+KFT+Vit B12+D3)</span><span><span class="modal-test-price"> ₹2,400</span></span></div>
+  </div>
+  <button class="modal-book-btn" onclick="closeModal('modal-fullbody');document.getElementById('packages').scrollIntoView({behavior:'smooth'})">View All Wellness Packages &rarr;</button></div></div>
+</div>
+
+<div class="modal-overlay" id="modal-covid" onclick="closeModalOnBg(event,'modal-covid')">
+  <div class="modal"><div class="modal-header"><div><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Service Details</div><div class="modal-title">COVID & <em>Swab Tests</em></div></div><button class="modal-close" onclick="closeModal('modal-covid')">✕</button></div>
+  <div class="modal-body"><div class="modal-desc">ICMR-approved COVID testing at your doorstep. RT-PCR reports accepted for travel. All safety protocols followed.</div>
+  <div class="modal-tests">
+    <div class="modal-test"><span class="modal-test-name">RT-PCR Test (with certificate)</span><span><span class="modal-test-price"> Call for Price</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">Rapid Antigen Test</span><span><span class="modal-test-price"> Call for Price</span></span></div>
+    <div class="modal-test"><span class="modal-test-name">COVID Antibody Test</span><span><span class="modal-test-price"> Call for Price</span></span></div>
+  </div>
+  <button class="modal-book-btn" onclick="closeModal('modal-covid');prefillTest('COVID RT-PCR')">Book COVID Test &rarr;</button></div></div>
+</div>
+
+<script>
+// NAV
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>60));
+
+// ===== BIOMEDICAL CANVAS ANIMATION =====
+const C=document.getElementById('bioCanvas');
+const ctx=C.getContext('2d');
+let W,H;
+function resize(){W=C.width=window.innerWidth;H=C.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+
+// Blood cells (RBCs - biconcave disc shape)
+class RBC{
+  constructor(){this.reset(true);}
+  reset(init){
+    this.x=init?Math.random()*W:W+60;
+    this.y=Math.random()*H;
+    this.r=Math.random()*18+10;
+    this.vx=-(Math.random()*0.8+0.3);
+    this.vy=(Math.random()-0.5)*0.3;
+    this.angle=Math.random()*Math.PI*2;
+    this.spin=( Math.random()-0.5)*0.012;
+    this.alpha=Math.random()*0.18+0.05;
+    this.pulse=Math.random()*Math.PI*2;
+  }
+  update(){
+    this.x+=this.vx;this.y+=this.vy;
+    this.angle+=this.spin;this.pulse+=0.02;
+    if(this.x<-80)this.reset(false);
+  }
+  draw(){
+    const pr=this.r*(1+Math.sin(this.pulse)*0.06);
+    ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);
+    ctx.beginPath();
+    ctx.ellipse(0,0,pr,pr*0.65,0,0,Math.PI*2);
+    ctx.fillStyle=`rgba(180,40,40,${this.alpha})`;
+    ctx.fill();
+    // inner dimple
+    ctx.beginPath();
+    ctx.ellipse(0,0,pr*0.45,pr*0.28,0,0,Math.PI*2);
+    ctx.fillStyle=`rgba(100,20,20,${this.alpha*0.7})`;
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+// White blood cell (circular, bigger)
+class WBC{
+  constructor(){this.reset(true);}
+  reset(init){
+    this.x=init?Math.random()*W:W+80;
+    this.y=Math.random()*H;
+    this.r=Math.random()*22+14;
+    this.vx=-(Math.random()*0.4+0.1);
+    this.vy=(Math.random()-0.5)*0.2;
+    this.alpha=Math.random()*0.1+0.04;
+    this.pulse=Math.random()*Math.PI*2;
+    this.lobes=Math.floor(Math.random()*3)+3;
+  }
+  update(){this.x+=this.vx;this.y+=this.vy;this.pulse+=0.015;if(this.x<-100)this.reset(false);}
+  draw(){
+    ctx.save();ctx.translate(this.x,this.y);
+    // nucleus lobes
+    for(let i=0;i<this.lobes;i++){
+      const a=(i/this.lobes)*Math.PI*2+this.pulse*0.1;
+      const nr=this.r*0.38;
+      ctx.beginPath();
+      ctx.arc(Math.cos(a)*nr*0.7,Math.sin(a)*nr*0.7,nr,0,Math.PI*2);
+      ctx.fillStyle=`rgba(160,180,255,${this.alpha*0.9})`;
+      ctx.fill();
+    }
+    ctx.beginPath();ctx.arc(0,0,this.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(200,220,255,${this.alpha*0.5})`;ctx.fill();
+    ctx.strokeStyle=`rgba(200,220,255,${this.alpha*1.2})`;ctx.lineWidth=0.5;ctx.stroke();
+    ctx.restore();
+  }
+}
+
+// DNA helix strand
+class DNA{
+  constructor(){
+    this.x=Math.random()*W;
+    this.y=Math.random()*H;
+    this.vy=-(Math.random()*0.4+0.15);
+    this.alpha=Math.random()*0.18+0.06;
+    this.len=Math.random()*120+80;
+    this.freq=Math.random()*0.04+0.03;
+    this.amp=Math.random()*14+8;
+    this.phase=Math.random()*Math.PI*2;
+    this.t=0;
+  }
+  update(){this.y+=this.vy;this.t+=0.012;if(this.y+this.len<0){this.y=H+20;this.x=Math.random()*W;}}
+  draw(){
+    const steps=30;
+    ctx.save();
+    // strand 1
+    ctx.beginPath();
+    for(let i=0;i<=steps;i++){
+      const py=this.y+i*(this.len/steps);
+      const px=this.x+Math.sin(i*this.freq*this.len+this.phase+this.t)*this.amp;
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.strokeStyle=`rgba(212,168,67,${this.alpha})`;ctx.lineWidth=1.2;ctx.stroke();
+    // strand 2
+    ctx.beginPath();
+    for(let i=0;i<=steps;i++){
+      const py=this.y+i*(this.len/steps);
+      const px=this.x+Math.sin(i*this.freq*this.len+this.phase+this.t+Math.PI)*this.amp;
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+    }
+    ctx.strokeStyle=`rgba(0,201,167,${this.alpha*0.8})`;ctx.lineWidth=1.2;ctx.stroke();
+    // rungs
+    for(let i=0;i<=steps;i+=3){
+      const py=this.y+i*(this.len/steps);
+      const px1=this.x+Math.sin(i*this.freq*this.len+this.phase+this.t)*this.amp;
+      const px2=this.x+Math.sin(i*this.freq*this.len+this.phase+this.t+Math.PI)*this.amp;
+      ctx.beginPath();ctx.moveTo(px1,py);ctx.lineTo(px2,py);
+      ctx.strokeStyle=`rgba(212,168,67,${this.alpha*0.4})`;ctx.lineWidth=0.7;ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+// Microscope circle overlay
+class Scope{
+  constructor(){this.reset();}
+  reset(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.r=Math.random()*60+30;
+    this.alpha=Math.random()*0.07+0.02;
+    this.vx=(Math.random()-0.5)*0.15;
+    this.vy=(Math.random()-0.5)*0.15;
+    this.grow=0;this.maxGrow=Math.random()*Math.PI*2;
+  }
+  update(){this.x+=this.vx;this.y+=this.vy;this.grow+=0.005;
+    if(this.x<-100||this.x>W+100||this.y<-100||this.y>H+100)this.reset();}
+  draw(){
+    ctx.save();ctx.translate(this.x,this.y);
+    // outer ring
+    ctx.beginPath();ctx.arc(0,0,this.r,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(212,168,67,${this.alpha})`;ctx.lineWidth=0.8;ctx.stroke();
+    // crosshair
+    ctx.beginPath();ctx.moveTo(-this.r,0);ctx.lineTo(this.r,0);
+    ctx.moveTo(0,-this.r);ctx.lineTo(0,this.r);
+    ctx.strokeStyle=`rgba(212,168,67,${this.alpha*0.5})`;ctx.lineWidth=0.5;ctx.stroke();
+    // inner dot
+    ctx.beginPath();ctx.arc(0,0,2,0,Math.PI*2);
+    ctx.fillStyle=`rgba(212,168,67,${this.alpha*2})`;ctx.fill();
+    ctx.restore();
+  }
+}
+
+// Platelets (small irregular shapes)
+class Platelet{
+  constructor(){this.reset(true);}
+  reset(init){
+    this.x=init?Math.random()*W:W+20;
+    this.y=Math.random()*H;
+    this.r=Math.random()*5+2;
+    this.vx=-(Math.random()*1+0.5);
+    this.vy=(Math.random()-0.5)*0.5;
+    this.alpha=Math.random()*0.25+0.08;
+    this.spin=Math.random()*0.05-0.025;
+    this.angle=Math.random()*Math.PI*2;
+  }
+  update(){this.x+=this.vx;this.y+=this.vy;this.angle+=this.spin;if(this.x<-20)this.reset(false);}
+  draw(){
+    ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.angle);
+    ctx.beginPath();ctx.ellipse(0,0,this.r,this.r*0.6,0,0,Math.PI*2);
+    ctx.fillStyle=`rgba(255,220,160,${this.alpha})`;ctx.fill();
+    ctx.restore();
+  }
+}
+
+// Flowing vein/artery path
+class VeinParticle{
+  constructor(path,speed,color){this.path=path;this.t=Math.random();this.speed=speed;this.color=color;this.alpha=Math.random()*0.12+0.04;this.r=Math.random()*2+1;}
+  update(){this.t+=this.speed;if(this.t>1)this.t=0;}
+  draw(){
+    const i=Math.floor(this.t*(this.path.length-1));
+    const f=this.t*(this.path.length-1)-i;
+    if(i>=this.path.length-1)return;
+    const px=this.path[i][0]+(this.path[i+1][0]-this.path[i][0])*f;
+    const py=this.path[i][1]+(this.path[i+1][1]-this.path[i][1])*f;
+    ctx.beginPath();ctx.arc(px,py,this.r,0,Math.PI*2);
+    ctx.fillStyle=this.color.replace('A',this.alpha.toFixed(2));ctx.fill();
+  }
+}
+
+const rbcs=Array.from({length:40},()=>new RBC());
+const wbcs=Array.from({length:8},()=>new WBC());
+const dnas=Array.from({length:12},()=>new DNA());
+const scopes=Array.from({length:6},()=>new Scope());
+const platelets=Array.from({length:30},()=>new Platelet());
+
+function buildVeinPath(){
+  const pts=[];
+  const startY=H*0.3+Math.random()*H*0.4;
+  for(let x=0;x<=W;x+=20){pts.push([x,startY+Math.sin(x*0.01)*60+Math.cos(x*0.007)*30]);}
+  return pts;
+}
+let veinPaths=[];
+let veinParticles=[];
+function initVeins(){
+  veinPaths=[];veinParticles=[];
+  for(let i=0;i<3;i++){
+    const path=buildVeinPath();
+    veinPaths.push(path);
+    for(let j=0;j<15;j++){
+      veinParticles.push(new VeinParticle(path,Math.random()*0.003+0.001,'rgba(180,40,40,A)'));
+    }
+  }
+}
+initVeins();
+window.addEventListener('resize',()=>{resize();initVeins();});
+
+function drawVeins(){
+  veinPaths.forEach(path=>{
+    ctx.beginPath();
+    path.forEach((p,i)=>i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle='rgba(120,20,20,0.06)';ctx.lineWidth=8;ctx.stroke();
+    ctx.beginPath();
+    path.forEach((p,i)=>i===0?ctx.moveTo(p[0],p[1]):ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle='rgba(180,40,40,0.04)';ctx.lineWidth=3;ctx.stroke();
+  });
+  veinParticles.forEach(p=>{p.update();p.draw();});
+}
+
+function loop(){
+  ctx.clearRect(0,0,W,H);
+  drawVeins();
+  dnas.forEach(d=>{d.update();d.draw();});
+  scopes.forEach(s=>{s.update();s.draw();});
+  wbcs.forEach(w=>{w.update();w.draw();});
+  rbcs.forEach(r=>{r.update();r.draw();});
+  platelets.forEach(p=>{p.update();p.draw();});
+  requestAnimationFrame(loop);
+}
+loop();
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// MODAL
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');document.body.style.overflow='';}
+function closeModalOnBg(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';});});
+
+function prefillTest(t){document.getElementById('ftest').value=t;document.getElementById('booking').scrollIntoView({behavior:'smooth'});}
+
+function submitForm(){
+  const name=document.getElementById('fname').value.trim();
+  const phone=document.getElementById('fphone').value.trim();
+  const email=document.getElementById('femail').value.trim();
+  const area=document.getElementById('farea').value;
+  const test=document.getElementById('ftest').value;
+  const date=document.getElementById('fdate').value;
+  const msg=document.getElementById('fmessage').value.trim();
+  if(!name||!phone||!area||!test){alert('Please fill in Name, Phone, Area and Test.');return;}
+  // Send via WhatsApp to business number
+  const wa=`Hello LabConnect Home!%0A%0A*New Booking Request*%0A%0A👤 Name: ${encodeURIComponent(name)}%0A📞 Phone: ${encodeURIComponent(phone)}%0A📧 Email: ${encodeURIComponent(email||'Not provided')}%0A📍 Area: ${encodeURIComponent(area)}%0A🧪 Test: ${encodeURIComponent(test)}%0A📅 Date: ${encodeURIComponent(date||'To be confirmed')}%0A💬 Message: ${encodeURIComponent(msg||'None')}`;
+  window.open(`https://wa.me/919217121345?text=${wa}`,'_blank');
+  // Also open email
+  const mailBody=`New Booking Request%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email||'Not provided')}%0AArea: ${encodeURIComponent(area)}%0ATest: ${encodeURIComponent(test)}%0ADate: ${encodeURIComponent(date||'To be confirmed')}%0AMessage: ${encodeURIComponent(msg||'None')}`;
+  setTimeout(()=>{window.location.href=`mailto:labconnecthome@gmail.com?subject=New Booking - ${encodeURIComponent(name)}&body=${mailBody}`;},800);
+  document.getElementById('bookingForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+document.getElementById('fdate').min=new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
